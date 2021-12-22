@@ -40,7 +40,7 @@ app.use("/reservation", reservationRoute);
 //application routes
 app.use("/application", applicationRoute);
 
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 const server = createServer(app);
 if (process.env.NODE_ENV == "development") {
   console.log("worked !");
@@ -51,6 +51,7 @@ if (process.env.NODE_ENV == "development") {
     );
   });
 } else {
+  console.log(PORT);
   sticky_cluster((callback) => callback(server), {
     concurrency: os.cpus().length,
     port: PORT,
